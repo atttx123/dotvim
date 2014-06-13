@@ -97,9 +97,9 @@ map <C-e> <END>
 map <C-a> <HOME>
 
 " quick fix
-nmap <leader>cw :cw<cr>
-nmap <F2> :cn<cr>
-nmap <S-F2> :cp<cr>
+"nmap <leader>cw :cw<cr>
+"nmap <F2> :cn<cr>
+"nmap <S-F2> :cp<cr>
 
 
 """""""""""""
