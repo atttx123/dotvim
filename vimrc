@@ -15,17 +15,13 @@ Bundle 'gmarik/vundle'
 " vim-scripts
 Bundle "The-NERD-tree"
 Bundle "genutils"
-Bundle "EasyMotion"
 Bundle "L9"
-Bundle "Solarized"
 
 " github
-Bundle "groenewege/vim-less"
 Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
 Bundle 'bling/vim-airline'
 Bundle "tpope/vim-fugitive"
-Bundle "wlangstroth/vim-racket"
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -74,7 +70,6 @@ set autoread     " when file is modified outside vim, auto reload
 set mouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,utf-16le,utf-16be,ucs-bom,latin1
-"set list
 set listchars=tab:▸\ ,eol:¬
 set completeopt+=longest
 set laststatus=2 " show status line
@@ -89,6 +84,7 @@ let mapleader = ";"
 " buffer & tab
 nmap <leader>] :bn<cr>
 nmap <leader>[ :bp<cr>
+
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
@@ -133,7 +129,7 @@ nmap <leader>n :NERDTreeToggle<cr>
 "" file type ""
 """""""""""""""
 " scheme
-autocmd BufReadPost *.rkt,*.rktl set filetype=scheme
+autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
