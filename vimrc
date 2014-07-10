@@ -92,8 +92,6 @@ nmap <leader>'[ :tabprevious<cr>
 map <C-e> <END>
 map <C-a> <HOME>
 
-nnoremap # <space>#
-
 " quick fix
 "nmap <leader>cw :cw<cr>
 "nmap <F2> :cn<cr>
@@ -107,7 +105,11 @@ nnoremap # <space>#
 let g:vundle_default_git_proto = 'git'
 
 " airline
-let g:airline_theme = 'serene'
+if (system('uname') == "Darwin\n")
+	let g:airline_theme = 'jellybeans'
+else
+	let g:airline_theme = 'serene'
+endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 
