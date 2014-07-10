@@ -92,6 +92,8 @@ nmap <leader>'[ :tabprevious<cr>
 map <C-e> <END>
 map <C-a> <HOME>
 
+nnoremap # <space>#
+
 " quick fix
 "nmap <leader>cw :cw<cr>
 "nmap <F2> :cn<cr>
@@ -105,7 +107,7 @@ map <C-a> <HOME>
 let g:vundle_default_git_proto = 'git'
 
 " airline
-let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'serene'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 
