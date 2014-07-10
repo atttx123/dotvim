@@ -105,8 +105,10 @@ map <C-a> <HOME>
 let g:vundle_default_git_proto = 'git'
 
 " airline
-if (system('uname') == "Darwin\n")
-	let g:airline_theme = 'jellybeans'
+if has('unix')
+	if (system('uname') == "Darwin\n")
+		let g:airline_theme = 'jellybeans'
+	endif
 else
 	let g:airline_theme = 'serene'
 endif
