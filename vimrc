@@ -22,6 +22,7 @@ Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
 Bundle 'bling/vim-airline'
 Bundle "tpope/vim-fugitive"
+Bundle 'altercation/vim-colors-solarized'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -44,7 +45,10 @@ filetype indent on
 "" Settings ""
 """"""""""""""
 try
-    colorscheme desert
+    " colorscheme desert
+	colorscheme solarized
+	let g:solarized_termcolors=256
+	let g:solarized_termtrans = 1
 catch
 endtry
 
@@ -80,6 +84,7 @@ set laststatus=2 " show status line
 "" Mappings ""
 """"""""""""""
 let mapleader = ";"
+set pastetoggle=<F12>
 
 " buffer & tab
 nmap <leader>] :bn<cr>
@@ -108,10 +113,12 @@ let g:vundle_default_git_proto = 'git'
 if (has('unix') && (system('uname') == "Darwin\n"))
 	let g:airline_theme = 'jellybeans'
 else
-	let g:airline_theme = 'serene'
+	let g:airline_theme = 'solarized'
 endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
+let g:airline_left_sep = '|'
+let g:airline_right_sep = '|'
 
 " ctrlp
 let g:ctrlp_working_path_mode = 0
