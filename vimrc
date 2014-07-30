@@ -45,7 +45,6 @@ filetype indent on
 "" Settings ""
 """"""""""""""
 try
-    " colorscheme desert
 	colorscheme solarized
 	let g:solarized_termcolors=256
 	let g:solarized_termtrans = 1
@@ -110,11 +109,7 @@ map <C-a> <HOME>
 let g:vundle_default_git_proto = 'git'
 
 " airline
-if (has('unix') && (system('uname') == "Darwin\n"))
-	let g:airline_theme = 'jellybeans'
-else
-	let g:airline_theme = 'solarized'
-endif
+let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = '|'
@@ -148,3 +143,20 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " python
 autocmd FileType python setlocal expandtab list
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+
+
+"""""""""""""
+"" mac osx ""
+"""""""""""""
+if (has('unix') && (system('uname') == "Darwin\n"))
+	let g:airline_theme = 'jellybeans'
+	colorscheme desert
+endif
