@@ -22,6 +22,7 @@ Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
 Bundle 'bling/vim-airline'
 Bundle "tpope/vim-fugitive"
+"" Bundle "vim-scripts/taglist.vim"
 Bundle 'altercation/vim-colors-solarized'
 
 " snipmate
@@ -128,6 +129,12 @@ let NERDTreeWinPos = "right"
 let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
+
+" taglist (ctags)
+"" let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的  
+"" let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
+"" let Tlist_Use_Right_Window = 1			"在右侧显示taglist
+"" let Tlist_Auto_Open=1
 
 
 
