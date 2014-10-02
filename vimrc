@@ -22,8 +22,8 @@ Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
 Bundle 'bling/vim-airline'
 Bundle "tpope/vim-fugitive"
-"" Bundle "vim-scripts/taglist.vim"
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'klen/python-mode'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -66,7 +66,7 @@ set autoindent smartindent cindent
 set wildmenu
 set fdl=3
 set formatoptions+=mM
-set ts=4 sts=4 sw=4 noexpandtab
+set ts=8 sts=4 sw=4 noexpandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -75,6 +75,7 @@ set mouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,utf-16le,utf-16be,ucs-bom,latin1
 set listchars=tab:▸\ ,eol:¬
+set completeopt-=preview
 set completeopt+=longest
 set laststatus=2 " show status line
 
@@ -130,11 +131,14 @@ let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
 
-" taglist (ctags)
-"" let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
-"" let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
-"" let Tlist_Use_Right_Window = 1			"在右侧显示taglist
-"" let Tlist_Auto_Open=1
+" pymonde
+let g:pymode = 1
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+let g:pymode_doc_bind = "<C-q>"
+let g:pymode_options_colorcolumn = 0
+let g:pymode_motion = 0
+let g:pymode_breakpoint = 0
+let g:pymode_syntax_all = 1
 
 
 
@@ -150,12 +154,13 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " python
 autocmd FileType python setlocal expandtab list
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+let python_highlight_all = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
