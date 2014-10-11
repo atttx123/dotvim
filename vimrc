@@ -66,7 +66,7 @@ set autoindent smartindent cindent
 set wildmenu
 set fdl=3
 set formatoptions+=mM
-set ts=8 sts=4 sw=4 noexpandtab
+set ts=4 sts=4 sw=4 noexpandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -132,7 +132,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
 
 " pymonde
-let g:pymode = 1
+let g:pymode = 0
 let g:pymode_rope_goto_definition_bind = "<C-]>"
 let g:pymode_doc_bind = "<C-q>"
 let g:pymode_options_colorcolumn = 0
@@ -168,7 +168,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 """""""""""""
 "" mac osx ""
 """""""""""""
-if (has('unix') && (system('uname') == "Darwin\n"))
-	let g:airline_theme = 'jellybeans'
-	colorscheme desert
-endif
+"if (has('unix') && (system('uname') == "Darwin\n"))
+"	let g:airline_theme = 'jellybeans'
+"	colorscheme desert
+"endif
