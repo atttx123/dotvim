@@ -78,7 +78,9 @@ set listchars=tab:▸\ ,eol:¬
 set completeopt-=preview
 set completeopt+=longest
 set laststatus=2 " show status line
-
+set guioptions-=r
+set guioptions-=T
+set guioptions-=L
 
 
 """"""""""""""
