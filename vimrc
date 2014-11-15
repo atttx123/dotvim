@@ -82,6 +82,8 @@ set guioptions-=r
 set guioptions-=T
 set guioptions-=L
 
+set fileformats=unix
+set encoding=prc
 
 """"""""""""""
 "" Mappings ""
@@ -97,8 +99,8 @@ nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
 " Bash(Emacs) key binding
-map <C-e> <END>
-map <C-a> <HOME>
+" map <C-e> <END>
+" map <C-a> <HOME>
 
 " quick fix
 "nmap <leader>cw :cw<cr>
