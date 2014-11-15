@@ -73,7 +73,7 @@ set history=400  " vim default save 20 histories
 set autoread     " when file is modified outside vim, auto reload
 set mouse=
 set encoding=utf8
-set fileencodings=utf8,gb2312,gb18030,utf-16le,utf-16be,ucs-bom,latin1
+set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
 set listchars=tab:▸\ ,eol:¬
 set completeopt-=preview
 set completeopt+=longest
@@ -82,8 +82,6 @@ set guioptions-=r
 set guioptions-=T
 set guioptions-=L
 
-set fileformats=unix
-set encoding=prc
 
 """"""""""""""
 "" Mappings ""
