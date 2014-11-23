@@ -23,7 +23,7 @@ Bundle "kien/ctrlp.vim"
 Bundle 'bling/vim-airline'
 Bundle "tpope/vim-fugitive"
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -133,14 +133,16 @@ let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
 
-" pymonde
-let g:pymode = 0
-let g:pymode_rope_goto_definition_bind = "<C-]>"
-let g:pymode_doc_bind = "<C-q>"
-let g:pymode_options_colorcolumn = 0
-let g:pymode_motion = 0
-let g:pymode_breakpoint = 0
-let g:pymode_syntax_all = 1
+" jedi-vim
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "top"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>b"
+let g:jedi#documentation_command = "<leader>d"
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "1"
 
 
 
@@ -156,8 +158,6 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " python
 autocmd FileType python setlocal expandtab list
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-let python_highlight_all = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -165,12 +165,3 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-
-
-"""""""""""""
-"" mac osx ""
-"""""""""""""
-"if (has('unix') && (system('uname') == "Darwin\n"))
-"	let g:airline_theme = 'jellybeans'
-"	colorscheme desert
-"endif
