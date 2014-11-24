@@ -24,6 +24,7 @@ Bundle 'bling/vim-airline'
 Bundle "tpope/vim-fugitive"
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'scrooloose/syntastic'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -144,6 +145,14 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 
+" syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol='E>'
+let g:syntastic_warning_symbol='W>'
+let g:syntastic_enable_python_checker = 1
+let g:syntastic_python_checkers = ['flake8', 'pep8', 'pyflakes']
+let g:syntastic_aggregate_errors = 1
+" let g:syntastic_quiet_messages = {"type": "style"}
 
 
 """""""""""""""

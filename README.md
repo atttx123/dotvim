@@ -15,3 +15,10 @@ install
 * Launch vim and run ```:PluginInstall```
 
   > To install from command line: ```vim +PluginInstall +qall```
+
+dependency
+======
+
+* python checker
+
+  * linux: python-flake8
