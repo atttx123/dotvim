@@ -21,4 +21,4 @@ dependency
 
 * python checker
 
-  * linux: python-flake8
+  * pip install flake8
