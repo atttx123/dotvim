@@ -32,7 +32,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
 
 " golang
-Bundle "jnwhiteh/vim-golang"
+Bundle "fatih/vim-go"
 set runtimepath+=$GOROOT/misc/vim
 
 "" required!
@@ -97,14 +97,6 @@ nmap <leader>[ :bp<cr>
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
-" Bash(Emacs) key binding
-" map <C-e> <END>
-" map <C-a> <HOME>
-
-" quick fix
-"nmap <leader>cw :cw<cr>
-"nmap <F2> :cn<cr>
-"nmap <S-F2> :cp<cr>
 
 
 """""""""""""
@@ -149,10 +141,12 @@ let g:jedi#show_call_signatures = "1"
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='E>'
 let g:syntastic_warning_symbol='W>'
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['flake8', 'pep8', 'pyflakes']
-let g:syntastic_aggregate_errors = 1
-" let g:syntastic_quiet_messages = {"type": "style"}
+let g:syntastic_enable_go_checker = 1
+let g:syntastic_go_checkers = ['go']
+
 
 
 """""""""""""""
@@ -163,7 +157,9 @@ autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+autocmd BufReadPost *.go setlocal filetype=go
+autocmd FileType go autocmd BufWritePre <buffer> GoImports
+autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 autocmd FileType python setlocal expandtab list
