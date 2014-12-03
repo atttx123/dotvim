@@ -16,6 +16,7 @@ Bundle 'gmarik/vundle'
 Bundle "The-NERD-tree"
 Bundle "genutils"
 Bundle "L9"
+Bundle "nginx.vim"
 
 " github
 Bundle "plasticboy/vim-markdown"
@@ -67,7 +68,7 @@ set autoindent smartindent cindent
 set wildmenu
 set fdl=3
 set formatoptions+=mM
-set ts=4 sts=4 sw=4 noexpandtab
+set ts=4 sts=4 sw=4 expandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -163,6 +164,10 @@ autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 autocmd FileType python setlocal expandtab list
+
+" nginx
+autocmd BufReadPost *.conf setlocal filetype=nginx
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
