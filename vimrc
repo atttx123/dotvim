@@ -145,7 +145,7 @@ let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--max-line-length=120'
+let g:syntastic_python_flake8_args='--max-line-length=110'
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go']
 
