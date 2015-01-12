@@ -164,6 +164,16 @@ autocmd FileType go autocmd BufWritePre <buffer> GoImports
 autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
+
+"define FormartSrc()
+func FormartPep8()
+exec "w"
+if &filetype == 'py'||&filetype == 'python'
+exec "r !autopep8 -i --aggressive %"
+endif
+exec "e! %"
+endfunc
+"end FormartSrc
 autocmd FileType python setlocal expandtab list
 
 " nginx
