@@ -77,7 +77,6 @@ set mouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
 set listchars=tab:▸\ ,eol:¬
-set completeopt-=preview
 set completeopt+=longest
 set laststatus=2 " show status line
 set guioptions-=r
@@ -98,6 +97,7 @@ nmap <leader>[ :bp<cr>
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 
 """""""""""""
