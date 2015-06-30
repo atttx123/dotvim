@@ -17,6 +17,7 @@ Bundle "The-NERD-tree"
 Bundle "genutils"
 Bundle "L9"
 Bundle "nginx.vim"
+Bundle "taglist.vim"
 
 " github
 Bundle "plasticboy/vim-markdown"
@@ -68,7 +69,7 @@ set autoindent smartindent cindent
 set wildmenu
 set fdl=3
 set formatoptions+=mM
-set ts=4 sts=4 sw=4 expandtab
+set ts=4 sts=4 sw=4 noexpandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -98,6 +99,7 @@ nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <C-F12> :TlistToggle<CR>
 
 
 """""""""""""
@@ -145,7 +147,7 @@ let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args='--max-line-length=100 --ignore=C901'
+let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go']
 
