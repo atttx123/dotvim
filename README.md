@@ -19,6 +19,6 @@ install
 dependency
 ======
 
-* for python
+* pip install flake8 autopep8
 
-  * pip install flake8 autopep8
+* apt-get install ctag
