@@ -21,4 +21,4 @@ dependency
 
 * pip install flake8 autopep8
 
-* apt-get install ctag
+* apt-get install exuberant-ctags
