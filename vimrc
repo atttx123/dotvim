@@ -78,7 +78,7 @@ set autoread     " when file is modified outside vim, auto reload
 set mouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
-set listchars=tab:▸\ ,eol:¬
+set listchars=trail:.,tab:▸\ ,eol:¬
 set completeopt+=longest
 set laststatus=2 " show status line
 set guioptions-=r
@@ -173,6 +173,10 @@ autocmd FileType python setlocal expandtab list
 " nginx
 autocmd BufReadPost *.conf setlocal filetype=nginx
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+" whitespace lang
+autocmd BufReadPost *.ws setlocal filetype=whitespace
+au FileType whitespace setlocal list
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
