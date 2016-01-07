@@ -55,6 +55,7 @@ try
 catch
 endtry
 
+set title
 set number
 set showcmd showmatch noshowmode
 set lazyredraw
