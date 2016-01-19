@@ -27,6 +27,7 @@ Bundle "tpope/vim-fugitive"
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/Logcat-syntax-highlighter'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -177,6 +178,8 @@ au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfil
 " whitespace lang
 autocmd BufReadPost *.ws setlocal filetype=whitespace
 au FileType whitespace setlocal list
+
+autocmd BufReadPost *.logcat setlocal filetype=logcat
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
