@@ -69,9 +69,9 @@ set magic lbr
 set nobackup nowb
 set autoindent smartindent cindent
 set wildmenu
-set fdl=3
+set foldlevel=3
 set formatoptions+=mM
-set ts=4 sts=4 sw=4 noexpandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -158,6 +158,8 @@ let g:syntastic_go_checkers = ['go']
 """""""""""""""
 "" file type ""
 """""""""""""""
+" c and cpp
+autocmd FileType c,cpp setlocal tabstop=8 softtabstop=8 shiftwidth=0 noexpandtab
 " scheme
 autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
