@@ -175,8 +175,8 @@ autocmd FileType python setlocal formatprg=autopep8\ -
 autocmd FileType python setlocal expandtab list
 
 " nginx
-autocmd BufReadPost *.conf setlocal filetype=nginx
-au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
+autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 " whitespace lang
 autocmd BufReadPost *.ws setlocal filetype=whitespace
