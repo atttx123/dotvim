@@ -22,7 +22,8 @@ Bundle "taglist.vim"
 " github
 Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle "tpope/vim-fugitive"
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'davidhalter/jedi-vim'
@@ -50,9 +51,9 @@ filetype indent on
 "" Settings ""
 """"""""""""""
 try
-	colorscheme solarized
-	let g:solarized_termcolors=256
-	let g:solarized_termtrans = 1
+    colorscheme solarized
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans = 1
 catch
 endtry
 
