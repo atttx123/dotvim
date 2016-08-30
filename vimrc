@@ -86,6 +86,8 @@ set laststatus=2 " show status line
 set guioptions-=r
 set guioptions-=T
 set guioptions-=L
+set cursorcolumn
+set cursorline
 
 
 """"""""""""""
