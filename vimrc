@@ -123,7 +123,7 @@ let g:airline_right_sep = '|'
 " ctrlp
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|CVS$\|\.svn$\|target$',
+    \ 'dir':  '\.git$\|CVS$\|\.svn$\|target$\|node_modules$',
     \ 'file': '\.class$\|\.so$|\.pyc$|\.swp$',
     \ }
 let g:ctrlp_extensions = ['dir', 'mixed']
@@ -176,6 +176,9 @@ autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 autocmd FileType python setlocal formatprg=autopep8\ -
 autocmd FileType python setlocal expandtab list
 
+" node
+autocmd FileType javascript setlocal expandtab omnifunc=javascriptcomplete#CompleteJS dictionary+=$HOME/.vim/dict/node.dict
+
 " nginx
 autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
@@ -189,6 +192,5 @@ autocmd BufReadPost *.logcat setlocal filetype=logcat
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
