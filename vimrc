@@ -29,6 +29,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
+Bundle 'ternjs/tern_for_vim'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -177,7 +178,15 @@ autocmd FileType python setlocal formatprg=autopep8\ -
 autocmd FileType python setlocal expandtab list
 
 " node
-autocmd FileType javascript setlocal expandtab omnifunc=javascriptcomplete#CompleteJS dictionary+=$HOME/.vim/dict/node.dict
+autocmd FileType javascript setlocal expandtab
+autocmd FileType javascript nmap <leader>b :TernDef<CR>
+autocmd FileType javascript nmap <leader>g :TernDef<CR>
+autocmd FileType javascript nmap <leader>d :TernDoc<CR>
+autocmd FileType javascript nmap <leader>t :TernType<CR>
+autocmd FileType javascript nmap <leader>u :TernRefs<CR>
+autocmd FileType javascript nmap <leader>r :TernRename<CR>
+autocmd FileType javascript inoremap <C-Space> <C-x><C-o>
+autocmd FileType javascript inoremap <C-@> <C-x><C-o>
 
 " nginx
 autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
