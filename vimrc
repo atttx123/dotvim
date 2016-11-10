@@ -30,6 +30,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
 Bundle 'ternjs/tern_for_vim'
+Bundle 'moll/vim-node'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -179,7 +180,6 @@ autocmd FileType python setlocal expandtab list
 
 " node
 autocmd FileType javascript setlocal expandtab
-autocmd FileType javascript nmap <leader>b :TernDef<CR>
 autocmd FileType javascript nmap <leader>g :TernDef<CR>
 autocmd FileType javascript nmap <leader>d :TernDoc<CR>
 autocmd FileType javascript nmap <leader>t :TernType<CR>
