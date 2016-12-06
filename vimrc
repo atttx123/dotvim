@@ -74,7 +74,9 @@ set autoindent smartindent cindent
 set wildmenu
 set foldlevel=3
 set formatoptions+=mM
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set fileformat=unix
+set fileformats=unix,dos
+set list tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -176,7 +178,6 @@ autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 autocmd FileType python setlocal formatprg=autopep8\ -
-autocmd FileType python setlocal expandtab list
 
 " node
 autocmd FileType javascript setlocal expandtab
@@ -194,8 +195,8 @@ autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | s
 
 " whitespace lang
 autocmd BufReadPost *.ws setlocal filetype=whitespace
-au FileType whitespace setlocal list
 
+" android logcat
 autocmd BufReadPost *.logcat setlocal filetype=logcat
 
 " Enable omni completion.
