@@ -21,6 +21,6 @@ dependency
 
 * cd ~/.vim/bundle/tern_for_vim && npm install tern
 
-* pip install flake8 autopep8
+* pip install jedi flake8 autopep8
 
 * apt-get install exuberant-ctags
