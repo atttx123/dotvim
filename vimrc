@@ -17,7 +17,6 @@ Bundle "The-NERD-tree"
 Bundle "genutils"
 Bundle "L9"
 Bundle "nginx.vim"
-Bundle "taglist.vim"
 
 " github
 Bundle "plasticboy/vim-markdown"
@@ -31,6 +30,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
 Bundle 'ternjs/tern_for_vim'
 Bundle 'moll/vim-node'
+Bundle 'majutsushi/tagbar'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -160,6 +160,9 @@ let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go']
 
+" tagbar
+nmap <F11> :TagbarToggle<CR>
+
 
 
 """""""""""""""
@@ -177,7 +180,9 @@ autocmd FileType go autocmd BufWritePre <buffer> GoImports
 autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
+" hotkey 'gq'
 autocmd FileType python setlocal formatprg=autopep8\ -
+autocmd FileType python setlocal expandtab
 
 " node
 autocmd FileType javascript setlocal expandtab
