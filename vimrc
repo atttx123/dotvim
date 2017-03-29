@@ -161,7 +161,7 @@ let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go']
 
 " tagbar
-nmap <F11> :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
 
 
 
