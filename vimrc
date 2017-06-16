@@ -154,11 +154,17 @@ let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='E>'
 let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
+
 let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
+
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go']
+
+let g:syntastic_enable_c_checker = 1
+let g:syntastic_c_checkers = ['checkpatch']
+let g:syntastic_c_checkpatch_exec = '/Users/yu/Software/checkpatch.pl'
 
 " tagbar
 nmap <leader>t :TagbarToggle<CR>
