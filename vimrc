@@ -19,6 +19,7 @@ Bundle "L9"
 Bundle "nginx.vim"
 
 " github
+Bundle "justmao945/vim-clang"
 Bundle "plasticboy/vim-markdown"
 Bundle "kien/ctrlp.vim"
 Bundle 'vim-airline/vim-airline'
