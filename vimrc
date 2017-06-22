@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-set runtimepath+=~/.vim/bundle/vundle/
+set runtimepath+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -134,12 +134,13 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_extensions = ['dir', 'mixed']
 
 " nerd tree
-let NERDTreeWinPos = "right"
+let NERDTreeWinPos = "left"
 let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
 
 " jedi-vim
+let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 " let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -157,15 +158,15 @@ let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_enable_python_checker = 1
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
 
 let g:syntastic_enable_go_checker = 1
-let g:syntastic_go_checkers = ['go']
+let g:syntastic_go_checkers = ['go', 'gofmt']
 
 let g:syntastic_enable_c_checker = 1
-let g:syntastic_c_checkers = ['checkpatch']
-let g:syntastic_c_checkpatch_exec = '/Users/yu/Software/checkpatch.pl'
+let g:syntastic_c_checkers = ['checkpatch', 'gcc']
+let g:syntastic_c_checkpatch_exec = '$HOME/.vim/syntastic/checkpatch.pl'
 
 " tagbar
 nmap <leader>t :TagbarToggle<CR>
