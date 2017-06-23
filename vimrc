@@ -37,10 +37,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
-
-" golang
 Bundle "fatih/vim-go"
-set runtimepath+=$GOROOT/misc/vim
 
 "" required!
 syntax on
