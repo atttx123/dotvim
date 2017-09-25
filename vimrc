@@ -19,31 +19,34 @@ Bundle "L9"
 Bundle "nginx.vim"
 
 " github
-Bundle "justmao945/vim-clang"
-Bundle "plasticboy/vim-markdown"
-Bundle "kien/ctrlp.vim"
+Bundle 'plasticboy/vim-markdown'
+Bundle 'kien/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
-Bundle "tpope/vim-fugitive"
+Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
-Bundle 'ternjs/tern_for_vim'
-Bundle 'moll/vim-node'
 Bundle 'majutsushi/tagbar'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
-Bundle "fatih/vim-go"
+
+" auto complete
+" Bundle 'justmao945/vim-clang'
+" Bundle 'ternjs/tern_for_vim'
+" Bundle 'moll/vim-node'
+" Bundle 'ajh17/VimCompletesMe'
+" Bundle 'davidhalter/jedi-vim'
+" Bundle 'fatih/vim-go'
+Bundle 'Valloric/YouCompleteMe'
 
 "" required!
 syntax on
 set t_Co=256
-filetype plugin on
-filetype indent on
+filetype on
 
 
 
@@ -105,7 +108,9 @@ nmap <leader>[ :bp<cr>
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <F7> mzgg=G`z
+" nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 nnoremap <silent> <C-F12> :TlistToggle<CR>
 
 
@@ -156,6 +161,7 @@ let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['python', 'flake8']
+let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
 let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
 
 let g:syntastic_enable_go_checker = 1
@@ -168,6 +174,8 @@ let g:syntastic_c_checkpatch_exec = '$HOME/.vim/syntastic/checkpatch.pl'
 " tagbar
 nmap <leader>t :TagbarToggle<CR>
 
+" yout complete me
+let g:ycm_python_binary_path = '/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/python3'
 
 
 """""""""""""""
@@ -180,13 +188,12 @@ autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
-autocmd BufReadPost *.go setlocal filetype=go
-autocmd FileType go autocmd BufWritePre <buffer> GoImports
-autocmd FileType go autocmd BufWritePre <buffer> GoFmt
+" hotkey 'gq'
+autocmd FileType python setlocal formatprg=gofmt
 
 " python
 " hotkey 'gq'
-autocmd FileType python setlocal formatprg=autopep8\ -
+autocmd FileType python setlocal formatprg='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/autopep8\ -'
 autocmd FileType python setlocal expandtab
 
 " node
