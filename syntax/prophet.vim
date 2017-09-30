@@ -7,7 +7,8 @@ end
 
 syntax case match
 
-syn keyword phtType label discrete continuous shortint int longint fload double string date timestamp
+syn keyword phtIdentifier label discrete continuous
+syn keyword phtType shortint int longint fload double string date timestamp
 syn keyword phtStatement log floor year month date hour minute second datediff timediff eliminatechar combine lineartrans Beta0 split mapping splitbykey getkey wordseg top
 
 syn region phtString start=/"/ skip=/\\"/ end=/"/
@@ -25,6 +26,7 @@ syn match phtError "[&|]\{2,}" display
 syn match phtError "[=]\{3,}" display
 
 " highlight link
+hi link phtIdentifier Identifier
 hi link phtType Type
 hi link phtStatement Statement
 
