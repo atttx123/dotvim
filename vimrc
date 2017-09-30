@@ -213,6 +213,9 @@ autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | s
 " whitespace lang
 autocmd BufReadPost *.ws setlocal filetype=whitespace
 
+" 4paradigm prophet
+autocmd BufReadPost *.prophet setlocal filetype=prophet
+
 " android logcat
 autocmd BufReadPost *.logcat setlocal filetype=logcat
 
