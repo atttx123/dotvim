@@ -33,6 +33,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
 
 " auto complete
 " Bundle 'justmao945/vim-clang'
@@ -47,6 +48,7 @@ Bundle 'Valloric/YouCompleteMe'
 syntax on
 set t_Co=256
 filetype on
+filetype plugin indent on
 
 
 
@@ -77,7 +79,7 @@ set foldlevel=3
 set formatoptions+=mM
 set fileformat=unix
 set fileformats=unix,dos
-set list tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set list tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -162,7 +164,7 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
-let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
+" let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
 
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go', 'gofmt']
@@ -172,10 +174,13 @@ let g:syntastic_c_checkers = ['checkpatch', 'gcc']
 let g:syntastic_c_checkpatch_exec = '$HOME/.vim/syntastic/checkpatch.pl'
 
 " tagbar
+" go language
 nmap <leader>t :TagbarToggle<CR>
 
 " yout complete me
-let g:ycm_python_binary_path = '/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/python3'
+let g:ycm_python_binary_path = '/Users/yu/.pyenv/shims/python'
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
 
 """""""""""""""
@@ -189,35 +194,19 @@ autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
 " hotkey 'gq'
-autocmd FileType python setlocal formatprg=gofmt
+autocmd FileType go setlocal formatprg=gofmt
+let g:go_version_warning = 0
 
 " python
 " hotkey 'gq'
 autocmd FileType python setlocal formatprg='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/autopep8\ -'
-autocmd FileType python setlocal expandtab
 
-" node
-autocmd FileType javascript setlocal expandtab
-autocmd FileType javascript nmap <leader>g :TernDef<CR>
-autocmd FileType javascript nmap <leader>d :TernDoc<CR>
-autocmd FileType javascript nmap <leader>t :TernType<CR>
-autocmd FileType javascript nmap <leader>u :TernRefs<CR>
-autocmd FileType javascript nmap <leader>r :TernRename<CR>
-autocmd FileType javascript inoremap <C-Space> <C-x><C-o>
-autocmd FileType javascript inoremap <C-@> <C-x><C-o>
+" c Family
+autocmd FileType c,c++,cpp,cc setlocal noexpandtab
 
 " nginx
 autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
-
-" whitespace lang
-autocmd BufReadPost *.ws setlocal filetype=whitespace
-
-" 4paradigm prophet
-autocmd BufReadPost *.prophet setlocal filetype=prophet
-
-" android logcat
-autocmd BufReadPost *.logcat setlocal filetype=logcat
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
