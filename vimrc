@@ -28,6 +28,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
 Bundle 'majutsushi/tagbar'
+Bundle 'francoiscabrol/ranger.vim'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -36,12 +37,8 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
 " auto complete
-" Bundle 'justmao945/vim-clang'
-" Bundle 'ternjs/tern_for_vim'
-" Bundle 'moll/vim-node'
-" Bundle 'ajh17/VimCompletesMe'
-" Bundle 'davidhalter/jedi-vim'
-" Bundle 'fatih/vim-go'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'lambdalisue/vim-pyenv'
 Bundle 'Valloric/YouCompleteMe'
 
 "" required!
@@ -143,6 +140,8 @@ let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
 
+
+" jedi
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
@@ -155,6 +154,18 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 
+" ycm
+let g:ycm_filetype_whitelist = {'c':1, 'cpp':1, 'cc':1, 'go':1}
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+nmap <leader>ji :YcmCompleter GoToInclude<CR>
+nmap <leader>b :YcmCompleter GoToDeclaration<CR>
+nmap <leader>g :YcmCompleter GoToDefinition<CR>
+nmap <leader>jd :YcmCompleter GoTo<CR>
+nmap <leader>ji :YcmCompleter GoToImprecise<CR>
+nmap <leader>jr :YcmCompleter GoToReferences<CR>
+nmap <leader>d :YcmCompleter GetDoc<CR>
+
 " syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='E>'
@@ -162,9 +173,9 @@ let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_enable_python_checker = 1
-let g:syntastic_python_checkers = ['python', 'flake8']
-let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
-" let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
+let g:syntastic_python_checkers = ['python3', 'flake8']
+let g:syntastic_python_flake8_args='--max-line-length=120'
+" let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
 
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go', 'gofmt']
@@ -174,13 +185,8 @@ let g:syntastic_c_checkers = ['checkpatch', 'gcc']
 let g:syntastic_c_checkpatch_exec = '$HOME/.vim/syntastic/checkpatch.pl'
 
 " tagbar
-" go language
 nmap <leader>t :TagbarToggle<CR>
 
-" yout complete me
-let g:ycm_python_binary_path = '/Users/yu/.pyenv/shims/python'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
 
 
 """""""""""""""
@@ -199,7 +205,7 @@ let g:go_version_warning = 0
 
 " python
 " hotkey 'gq'
-autocmd FileType python setlocal formatprg='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/autopep8\ -'
+autocmd FileType python setlocal formatprg='autopep8\ -'
 
 " c Family
 autocmd FileType c,c++,cpp,cc setlocal noexpandtab
