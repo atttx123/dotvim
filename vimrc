@@ -19,25 +19,28 @@ Bundle "L9"
 Bundle "nginx.vim"
 
 " github
-Bundle "justmao945/vim-clang"
-Bundle "plasticboy/vim-markdown"
-Bundle "kien/ctrlp.vim"
+Bundle 'plasticboy/vim-markdown'
+Bundle 'kien/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
-Bundle "tpope/vim-fugitive"
+Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
-Bundle 'ternjs/tern_for_vim'
-Bundle 'moll/vim-node'
 Bundle 'majutsushi/tagbar'
+Bundle 'francoiscabrol/ranger.vim'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
-Bundle "fatih/vim-go"
+Bundle 'honza/vim-snippets'
+
+" auto complete
+Bundle 'lambdalisue/vim-pyenv'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'justmao945/vim-clang'
+Bundle 'Valloric/YouCompleteMe'
 
 " kubernetes
 Bundle 'c9s/helper.vim'
@@ -47,8 +50,8 @@ Bundle 'c9s/vikube.vim'
 "" required!
 syntax on
 set t_Co=256
-filetype plugin on
-filetype indent on
+filetype on
+filetype plugin indent on
 
 
 
@@ -79,7 +82,7 @@ set foldlevel=3
 set formatoptions+=mM
 set fileformat=unix
 set fileformats=unix,dos
-set list tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set list tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set vb t_vb=
 set background=dark
 set history=400  " vim default save 20 histories
@@ -110,7 +113,9 @@ nmap <leader>[ :bp<cr>
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <F7> mzgg=G`z
+" nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 nnoremap <silent> <C-F12> :TlistToggle<CR>
 
 
@@ -141,6 +146,8 @@ let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<cr>
 
+
+" jedi
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
@@ -153,6 +160,18 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 
+" ycm
+let g:ycm_filetype_whitelist = {'c':1, 'cpp':1, 'cc':1, 'go':1}
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+nmap <leader>ji :YcmCompleter GoToInclude<CR>
+nmap <leader>b :YcmCompleter GoToDeclaration<CR>
+nmap <leader>g :YcmCompleter GoToDefinition<CR>
+nmap <leader>jd :YcmCompleter GoTo<CR>
+nmap <leader>ji :YcmCompleter GoToImprecise<CR>
+nmap <leader>jr :YcmCompleter GoToReferences<CR>
+nmap <leader>d :YcmCompleter GetDoc<CR>
+
 " syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_error_symbol='E>'
@@ -160,8 +179,9 @@ let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_enable_python_checker = 1
-let g:syntastic_python_checkers = ['python', 'flake8']
-let g:syntastic_python_flake8_args='--max-line-length=120 --ignore=C901'
+let g:syntastic_python_checkers = ['python3', 'flake8']
+let g:syntastic_python_flake8_args='--max-line-length=120'
+" let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
 
 let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go', 'gofmt']
@@ -185,41 +205,29 @@ autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
+let g:go_version_warning = 0
 autocmd BufReadPost *.go setlocal filetype=go
+" hotkey 'gq'
+autocmd FileType go setlocal formatprg=gofmt
 " autocmd FileType go autocmd BufWritePre <buffer> GoImports
 " autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 " hotkey 'gq'
-autocmd FileType python setlocal formatprg=autopep8\ -
-autocmd FileType python setlocal expandtab
+autocmd FileType python setlocal formatprg='autopep8\ -'
 
-" node
-autocmd FileType javascript setlocal expandtab
-autocmd FileType javascript nmap <leader>g :TernDef<CR>
-autocmd FileType javascript nmap <leader>d :TernDoc<CR>
-autocmd FileType javascript nmap <leader>t :TernType<CR>
-autocmd FileType javascript nmap <leader>u :TernRefs<CR>
-autocmd FileType javascript nmap <leader>r :TernRename<CR>
-autocmd FileType javascript inoremap <C-Space> <C-x><C-o>
-autocmd FileType javascript inoremap <C-@> <C-x><C-o>
+" c Family
+autocmd FileType c,c++,cpp,cc setlocal noexpandtab
 
 " nginx
 autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
 autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
-
-" whitespace lang
-autocmd BufReadPost *.ws setlocal filetype=whitespace
-
-" android logcat
-autocmd BufReadPost *.logcat setlocal filetype=logcat
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-let g:go_version_warning = 0
 
 let g:vikube_autoupdate = 1
 let g:vikube_default_logs_tail = 500
