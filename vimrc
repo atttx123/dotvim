@@ -39,6 +39,11 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'garbas/vim-snipmate'
 Bundle "fatih/vim-go"
 
+" kubernetes
+Bundle 'c9s/helper.vim'
+Bundle 'c9s/treemenu.vim'
+Bundle 'c9s/vikube.vim'
+
 "" required!
 syntax on
 set t_Co=256
@@ -181,8 +186,8 @@ autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
 autocmd BufReadPost *.go setlocal filetype=go
-autocmd FileType go autocmd BufWritePre <buffer> GoImports
-autocmd FileType go autocmd BufWritePre <buffer> GoFmt
+" autocmd FileType go autocmd BufWritePre <buffer> GoImports
+" autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 " hotkey 'gq'
@@ -214,3 +219,9 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+let g:go_version_warning = 0
+
+let g:vikube_autoupdate = 1
+let g:vikube_default_logs_tail = 500
+let g:vikube_use_current_namespace = 1
+let g:vikube_disable_custom_highlight = 1
