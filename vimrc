@@ -203,7 +203,8 @@ nmap <leader>t :TagbarToggle<CR>
 "" file type ""
 """""""""""""""
 " c and cpp
-autocmd FileType c,cpp setlocal tabstop=8 softtabstop=8 shiftwidth=0 noexpandtab
+autocmd FileType c,cpp,cc,c++ setlocal tabstop=8 softtabstop=8 shiftwidth=0 noexpandtab
+
 " scheme
 autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
@@ -212,16 +213,13 @@ autocmd FileType scheme setlocal sw=2 expandtab
 let g:go_version_warning = 0
 autocmd BufReadPost *.go setlocal filetype=go
 " hotkey 'gq'
-autocmd FileType go setlocal formatprg=gofmt
+autocmd FileType go setlocal formatprg=gofmt noexpandtab
 " autocmd FileType go autocmd BufWritePre <buffer> GoImports
 " autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 " hotkey 'gq'
 autocmd FileType python setlocal formatprg='autopep8\ -'
-
-" c Family
-autocmd FileType c,c++,cpp,cc setlocal noexpandtab
 
 " nginx
 autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
@@ -237,3 +235,4 @@ let g:vikube_autoupdate = 1
 let g:vikube_default_logs_tail = 500
 let g:vikube_use_current_namespace = 1
 let g:vikube_disable_custom_highlight = 1
+
