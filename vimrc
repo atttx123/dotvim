@@ -1,4 +1,5 @@
 set nocompatible
+filetype on
 filetype off
 
 set runtimepath+=$HOME/.vim/bundle/vundle/
@@ -37,10 +38,10 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
 " auto complete
-Bundle 'lambdalisue/vim-pyenv'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'justmao945/vim-clang'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'justmao945/vim-clang'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'lambdalisue/vim-pyenv'
 
 " kubernetes
 Bundle 'c9s/helper.vim'
@@ -160,6 +161,9 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 
+" pyenv
+let g:pyenv#auto_activate = 0
+
 " ycm
 let g:ycm_filetype_whitelist = {'c':1, 'cpp':1, 'cc':1, 'go':1}
 let g:ycm_server_keep_logfiles = 1
@@ -228,7 +232,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-
+" vikube
 let g:vikube_autoupdate = 1
 let g:vikube_default_logs_tail = 500
 let g:vikube_use_current_namespace = 1
