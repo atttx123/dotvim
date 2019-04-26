@@ -30,6 +30,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/Logcat-syntax-highlighter'
 Bundle 'majutsushi/tagbar'
 Bundle 'francoiscabrol/ranger.vim'
+Bundle 'stephpy/vim-yaml'
 
 " snipmate
 Bundle 'tomtom/tlib_vim'
@@ -114,10 +115,22 @@ nmap <leader>[ :bp<cr>
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
 
-nnoremap <F7> mzgg=G`z
+" nnoremap <F7> mzgg=G`z
 " nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-nnoremap <silent> <C-F12> :TlistToggle<CR>
+" nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+" nnoremap <silent> <C-F12> :TlistToggle<CR>
+
+" Disable Arrow keys in Escape mode
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+" imap <up> <nop>
+" imap <down> <nop>
+" imap <left> <nop>
+" imap <right> <nop>
 
 
 """""""""""""
@@ -165,9 +178,10 @@ let g:jedi#show_call_signatures = "1"
 let g:pyenv#auto_activate = 0
 
 " ycm
-let g:ycm_filetype_whitelist = {'c':1, 'cpp':1, 'cc':1, 'go':1}
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
+let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
+let g:ycm_server_keep_logfiles = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 nmap <leader>ji :YcmCompleter GoToInclude<CR>
 nmap <leader>b :YcmCompleter GoToDeclaration<CR>
 nmap <leader>g :YcmCompleter GoToDefinition<CR>
@@ -182,20 +196,20 @@ let g:syntastic_error_symbol='E>'
 let g:syntastic_warning_symbol='W>'
 let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_enable_python_checker = 1
+autocmd FileType python let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['python3', 'flake8']
 let g:syntastic_python_flake8_args='--max-line-length=120'
 " let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
 
-let g:syntastic_enable_go_checker = 1
+autocmd FileType go let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go', 'gofmt']
 
-let g:syntastic_enable_c_checker = 1
+autocmd FileType c let g:syntastic_enable_c_checker = 1
 let g:syntastic_c_checkers = ['checkpatch', 'gcc']
 let g:syntastic_c_checkpatch_exec = '$HOME/.vim/syntastic/checkpatch.pl'
 
 " tagbar
-nmap <leader>t :TagbarToggle<CR>
+nmap <leader>m :TagbarToggle<CR>
 
 
 
@@ -210,10 +224,37 @@ autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
 autocmd FileType scheme setlocal sw=2 expandtab
 
 " golang
-let g:go_version_warning = 0
-autocmd BufReadPost *.go setlocal filetype=go
 " hotkey 'gq'
 autocmd FileType go setlocal formatprg=gofmt noexpandtab
+autocmd BufReadPost *.go setlocal filetype=go
+let g:go_version_warning = 0
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 " autocmd FileType go autocmd BufWritePre <buffer> GoImports
 " autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 

@@ -6,6 +6,8 @@ my .vim &amp; .vimrc
 install
 ======
 
+* ```go get -u github.com/jstemmer/gotags```
+
 * ```git clone https://github.com/atttx123/dotvim.git ~/.vim```
 
 * ```git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle```
