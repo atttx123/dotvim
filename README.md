@@ -6,23 +6,16 @@ my .vim &amp; .vimrc
 install
 ======
 
-* ```go get -u github.com/jstemmer/gotags```
 
 * ```git clone https://github.com/atttx123/dotvim.git ~/.vim```
 
-* ```git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle```
-
 * ```ln -s ~/.vim/vimrc ~/.vimrc```
-
-* Launch vim and run ```:PluginInstall```
-
-  > To install from command line: ```vim +PluginInstall +qall```
 
 dependency
 ======
 
-* cd ~/.vim/bundle/tern_for_vim && npm install tern
+* `go get -u github.com/jstemmer/gotags`
 
-* pip install jedi flake8 autopep8
+* `pip install jedi flake8 autopep8`
 
-* apt-get install exuberant-ctags
+* `apt-get install exuberant-ctags`

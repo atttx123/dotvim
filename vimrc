@@ -1,53 +1,40 @@
+" automatic installlation
+if empty(glob('$HOME/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set nocompatible
 filetype on
 filetype off
+call plug#begin('$HOME/.vim/plugged')
+Plug 'lambdalisue/vim-pyenv', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'] }
 
-set runtimepath+=$HOME/.vim/bundle/vundle/
-call vundle#rc()
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'altercation/vim-colors-solarized'
+" vim snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" vim airline
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+" vim kubernetes
+Plug 'c9s/helper.vim', { 'on': [] }
+Plug 'c9s/treemenu.vim', { 'on': [] }
+Plug 'c9s/vikube.vim', { 'on': [] }
+function K8S()
+    call plug#load('helper.vim', 'treemenu.vim', 'vikube.vim')
+endfunction
 
-" let Vundle manage Vundle
-"" required!
-Bundle 'gmarik/vundle'
-
-
-"""""""""""""
-"" Bundles ""
-"""""""""""""
-" vim-scripts
-Bundle "The-NERD-tree"
-Bundle "genutils"
-Bundle "L9"
-Bundle "nginx.vim"
-
-" github
-Bundle 'plasticboy/vim-markdown'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'tpope/vim-fugitive'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/Logcat-syntax-highlighter'
-Bundle 'majutsushi/tagbar'
-Bundle 'francoiscabrol/ranger.vim'
-Bundle 'stephpy/vim-yaml'
-
-" snipmate
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-
-" auto complete
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'justmao945/vim-clang'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'lambdalisue/vim-pyenv'
-
-" kubernetes
-Bundle 'c9s/helper.vim'
-Bundle 'c9s/treemenu.vim'
-Bundle 'c9s/vikube.vim'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+call plug#end()
 
 "" required!
 syntax on
@@ -93,7 +80,7 @@ set mouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
 set listchars=trail:.,tab:▸\ ,eol:¬
-set completeopt+=longest
+set completeopt=longest,menuone,preview
 set laststatus=2 " show status line
 set guioptions-=r
 set guioptions-=T
@@ -111,34 +98,13 @@ set pastetoggle=<F12>
 " buffer & tab
 nmap <leader>] :bn<cr>
 nmap <leader>[ :bp<cr>
-
 nmap <leader>'] :tabnext<cr>
 nmap <leader>'[ :tabprevious<cr>
-
-" nnoremap <F7> mzgg=G`z
-" nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-" nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-" nnoremap <silent> <C-F12> :TlistToggle<CR>
-
-" Disable Arrow keys in Escape mode
-" map <up> <nop>
-" map <down> <nop>
-" map <left> <nop>
-" map <right> <nop>
-
-" Disable Arrow keys in Insert mode
-" imap <up> <nop>
-" imap <down> <nop>
-" imap <left> <nop>
-" imap <right> <nop>
 
 
 """""""""""""
 "" Plugins ""
 """""""""""""
-" vundle
-let g:vundle_default_git_proto = 'git'
-
 " airline
 let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
@@ -174,14 +140,11 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 
-" pyenv
-let g:pyenv#auto_activate = 0
-
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
 let g:ycm_server_keep_logfiles = 0
 let g:ycm_server_log_level = 'info'
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
 nmap <leader>ji :YcmCompleter GoToInclude<CR>
 nmap <leader>b :YcmCompleter GoToDeclaration<CR>
 nmap <leader>g :YcmCompleter GoToDefinition<CR>
@@ -206,7 +169,7 @@ let g:syntastic_go_checkers = ['go', 'gofmt']
 
 autocmd FileType c let g:syntastic_enable_c_checker = 1
 let g:syntastic_c_checkers = ['checkpatch', 'gcc']
-let g:syntastic_c_checkpatch_exec = '$HOME/.vim/syntastic/checkpatch.pl'
+let g:syntastic_c_checkpatch_exec = '$HOME/.vim/own-scripts/checkpatch.pl'
 
 " tagbar
 nmap <leader>m :TagbarToggle<CR>
@@ -218,10 +181,7 @@ nmap <leader>m :TagbarToggle<CR>
 """""""""""""""
 " c and cpp
 autocmd FileType c,cpp,cc,c++ setlocal tabstop=8 softtabstop=8 shiftwidth=0 noexpandtab
-
-" scheme
-autocmd BufReadPost *.rkt,*.rktl setlocal filetype=scheme
-autocmd FileType scheme setlocal sw=2 expandtab
+autocmd FileType c,cpp,cc,c++ nmap <leader>e :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " golang
 " hotkey 'gq'
@@ -255,21 +215,10 @@ let g:tagbar_type_go = {
 	\ 'ctagsbin'  : 'gotags',
 	\ 'ctagsargs' : '-sort -silent'
 \ }
-" autocmd FileType go autocmd BufWritePre <buffer> GoImports
-" autocmd FileType go autocmd BufWritePre <buffer> GoFmt
 
 " python
 " hotkey 'gq'
 autocmd FileType python setlocal formatprg='autopep8\ -'
-
-" nginx
-autocmd BufReadPost *.conf if &ft == '' | setfiletype nginx | endif
-autocmd BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " vikube
 let g:vikube_autoupdate = 1

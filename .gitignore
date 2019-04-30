@@ -1,3 +1,5 @@
+autoload/plug.vim
 bundle/
+plugged/
 .netrwhist
 *.swp
