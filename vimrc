@@ -24,6 +24,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " vim airline
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+
 " vim kubernetes
 Plug 'c9s/helper.vim', { 'on': [] }
 Plug 'c9s/treemenu.vim', { 'on': [] }
