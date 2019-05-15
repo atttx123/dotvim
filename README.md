@@ -18,4 +18,4 @@ dependency
 
 * `pip install jedi flake8 autopep8`
 
-* `apt-get install exuberant-ctags`
+* `apt-get install exuberant-ctags ranger`

@@ -5,16 +5,20 @@ if empty(glob('$HOME/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+"" required!
 set nocompatible
+syntax on
+set t_Co=256
 filetype on
-filetype off
+filetype plugin indent on
+
 call plug#begin('$HOME/.vim/plugged')
 Plug 'lambdalisue/vim-pyenv', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
-Plug 'pearofducks/ansible-vim', { 'for': ['yaml.ansible'] }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'pearofducks/ansible-vim', { 'for': 'yaml.ansible' }
+Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
@@ -32,17 +36,11 @@ function K8S()
     call plug#load('helper.vim', 'treemenu.vim', 'vikube.vim')
 endfunction
 
-Plug 'kien/ctrlp.vim', { 'on': ['CtrlP'] }
-Plug 'francoiscabrol/ranger.vim', { 'on': ['Ranger'] }
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'francoiscabrol/ranger.vim', { 'on': 'Ranger' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 call plug#end()
-
-"" required!
-syntax on
-set t_Co=256
-filetype on
-filetype plugin indent on
 
 
 
