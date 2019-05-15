@@ -18,7 +18,6 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'pearofducks/ansible-vim', { 'for': 'yaml.ansible' }
-Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
@@ -119,12 +118,13 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.class$\|\.so$|\.pyc$|\.swp$',
     \ }
 let g:ctrlp_extensions = ['dir', 'mixed']
+nmap <c-p> :CtrlP<CR>
 
 " nerd tree
 let NERDTreeWinPos = "left"
 let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
-nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>n :NERDTreeToggle<CR>
 
 
 " jedi
@@ -154,15 +154,16 @@ nmap <leader>jr :YcmCompleter GoToReferences<CR>
 nmap <leader>d :YcmCompleter GetDoc<CR>
 
 " syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_error_symbol='E>'
-let g:syntastic_warning_symbol='W>'
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = 'E>'
+let g:syntastic_warning_symbol = 'W>'
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['java'] }
 
 autocmd FileType python let g:syntastic_enable_python_checker = 1
-let g:syntastic_python_checkers = ['python3', 'flake8']
+let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_python_flake8_args='--max-line-length=120'
-" let g:syntastic_python_flake8_exec='/Users/yu/.pyenv/versions/3.6.1/envs/walley/bin/flake8'
 
 autocmd FileType go let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go', 'gofmt']
