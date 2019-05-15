@@ -11,14 +11,13 @@ filetype off
 call plug#begin('$HOME/.vim/plugged')
 Plug 'lambdalisue/vim-pyenv', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'] }
+Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
+Plug 'pearofducks/ansible-vim', { 'for': ['yaml.ansible'] }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
 
-Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
-Plug 'francoiscabrol/ranger.vim'
 Plug 'altercation/vim-colors-solarized'
 " vim snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -33,6 +32,8 @@ function K8S()
     call plug#load('helper.vim', 'treemenu.vim', 'vikube.vim')
 endfunction
 
+Plug 'kien/ctrlp.vim', { 'on': ['CtrlP'] }
+Plug 'francoiscabrol/ranger.vim', { 'on': ['Ranger'] }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 call plug#end()
