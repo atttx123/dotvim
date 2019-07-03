@@ -16,11 +16,11 @@ call plug#begin('$HOME/.vim/plugged')
 Plug 'lambdalisue/vim-pyenv', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'pearofducks/ansible-vim', { 'for': 'yaml.ansible' }
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
+Plug 'plasticboy/vim-markdown'
+Plug 'pearofducks/ansible-vim'
 Plug 'altercation/vim-colors-solarized'
 " vim snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -31,6 +31,7 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'c9s/helper.vim', { 'on': [] }
 Plug 'c9s/treemenu.vim', { 'on': [] }
 Plug 'c9s/vikube.vim', { 'on': [] }
+" :call K8S()
 function K8S()
     call plug#load('helper.vim', 'treemenu.vim', 'vikube.vim')
 endfunction
@@ -174,6 +175,8 @@ let g:syntastic_c_checkpatch_exec = '$HOME/.vim/own-scripts/checkpatch.pl'
 
 " tagbar
 nmap <leader>m :TagbarToggle<CR>
+" ranger
+nmap <leader>f :Ranger<CR>
 
 
 
