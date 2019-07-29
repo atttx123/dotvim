@@ -13,7 +13,6 @@ filetype on
 filetype plugin indent on
 
 call plug#begin('$HOME/.vim/plugged')
-Plug 'lambdalisue/vim-pyenv', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
 
@@ -155,12 +154,13 @@ nmap <leader>jr :YcmCompleter GoToReferences<CR>
 nmap <leader>d :YcmCompleter GetDoc<CR>
 
 " syntastic
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = 'E>'
 let g:syntastic_warning_symbol = 'W>'
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['java'] }
+let g:syntastic_cursor_column = 0
+let g:syntastic_echo_current_error = 0
 
 autocmd FileType python let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['python', 'flake8']
