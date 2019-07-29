@@ -17,6 +17,8 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'scrooloose/syntastic'
 Plug 'plasticboy/vim-markdown'
 Plug 'pearofducks/ansible-vim'
@@ -233,3 +235,5 @@ let g:vikube_default_logs_tail = 500
 let g:vikube_use_current_namespace = 1
 let g:vikube_disable_custom_highlight = 1
 
+" fugitive
+let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/', 'http://git.4paradigm.com']
