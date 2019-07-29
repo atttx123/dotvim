@@ -154,6 +154,7 @@ nmap <leader>jr :YcmCompleter GoToReferences<CR>
 nmap <leader>d :YcmCompleter GetDoc<CR>
 
 " syntastic
+" :SyntasticCheck
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = 'E>'
@@ -161,6 +162,7 @@ let g:syntastic_warning_symbol = 'W>'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_cursor_column = 0
 let g:syntastic_echo_current_error = 0
+" :SyntasticToggleMode
 let g:syntastic_mode_map = { "mode": "passive" }
 
 autocmd FileType python let g:syntastic_enable_python_checker = 1
