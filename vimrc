@@ -161,6 +161,7 @@ let g:syntastic_warning_symbol = 'W>'
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_cursor_column = 0
 let g:syntastic_echo_current_error = 0
+let g:syntastic_mode_map = { "mode": "passive" }
 
 autocmd FileType python let g:syntastic_enable_python_checker = 1
 let g:syntastic_python_checkers = ['python', 'flake8']
