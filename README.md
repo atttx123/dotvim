@@ -8,8 +8,8 @@ install
 
 
 * ```git clone https://github.com/atttx123/dotvim.git ~/.vim```
-
 * ```ln -s ~/.vim/vimrc ~/.vimrc```
+* ```ln -s ~/.vim/ideavimrc ~/.ideavimrc```
 
 dependency
 ======

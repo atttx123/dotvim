@@ -16,13 +16,13 @@ call plug#begin('$HOME/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
 
+Plug 'scrooloose/syntastic'
+Plug 'pearofducks/ansible-vim'
+Plug 'altercation/vim-colors-solarized'
+" vim fugitive && :Gbrowse
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'scrooloose/syntastic'
-Plug 'plasticboy/vim-markdown'
-Plug 'pearofducks/ansible-vim'
-Plug 'altercation/vim-colors-solarized'
 " vim snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " vim airline
@@ -136,14 +136,14 @@ nmap <leader>n :NERDTreeToggle<CR>
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
-" let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>b"
 let g:jedi#documentation_command = "<leader>d"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "1"
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = "2"
 
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
@@ -151,8 +151,8 @@ let g:ycm_server_keep_logfiles = 0
 let g:ycm_server_log_level = 'info'
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
 nmap <leader>ji :YcmCompleter GoToInclude<CR>
-nmap <leader>b :YcmCompleter GoToDeclaration<CR>
-nmap <leader>g :YcmCompleter GoToDefinition<CR>
+nmap <leader>g :YcmCompleter GoToDeclaration<CR>
+nmap <leader>b :YcmCompleter GoToDefinition<CR>
 nmap <leader>jd :YcmCompleter GoTo<CR>
 nmap <leader>ji :YcmCompleter GoToImprecise<CR>
 nmap <leader>jr :YcmCompleter GoToReferences<CR>
@@ -240,3 +240,7 @@ let g:vikube_disable_custom_highlight = 1
 
 " fugitive
 let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/', 'http://git.4paradigm.com']
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:TerminusFocusReporting=0

@@ -1,0 +1,53 @@
+set title
+set number
+set showcmd showmatch noshowmode
+set lazyredraw
+set hidden
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+set incsearch hlsearch
+set smartcase
+set magic lbr
+set nobackup nowb
+set autoindent smartindent cindent
+set wildmenu
+set foldlevel=3
+set formatoptions+=mM
+set fileformat=unix
+set fileformats=unix,dos
+set list tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set vb t_vb=
+set background=dark
+set history=400  " vim default save 20 histories
+set autoread     " when file is modified outside vim, auto reload
+set mouse=
+set encoding=utf8
+set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
+set listchars=trail:.,tab:▸\ ,eol:¬
+set completeopt=longest,menuone,preview
+set laststatus=2 " show status line
+set cursorcolumn
+set cursorline
+
+
+""""""""""""""
+"" Mappings ""
+""""""""""""""
+set pastetoggle=<F12>
+" Set leader to ;
+" Note: This line MUST come before any <leader> mappings
+let mapleader=';'
+let maplocalleader = ';'
+
+nmap <C-p> :action GotoFile<CR>
+" tab
+nmap <leader>] :action NextTab<CR>
+nmap <leader>[ :action PreviousTab<CR>
+
+nmap <leader>m :action ActivateStructureToolWindow<CR>
+nmap <leader>n :action ActivateProjectToolWindow<CR>
+nmap <leader>u :action FindUsages<CR>
+nmap <leader>d :action QuickJavaDoc<CR>
+nmap <leader>g :action GotoDeclaration<CR>
+nmap <leader>r :action RenameElement<CR>
+
