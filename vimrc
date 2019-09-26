@@ -97,13 +97,11 @@ let mapleader = ";"
 set pastetoggle=<F12>
 
 " buffer & tab
-nmap <leader>] :bn<cr>
-nmap <leader>[ :bp<cr>
+nmap K :bn<cr>
+nmap J :bp<cr>
 
-nmap <leader>} :tabnext<cr>
-nmap <leader>'] :tabnext<cr>
-nmap <leader>{ :tabprevious<cr>
-nmap <leader>'[ :tabprevious<cr>
+nmap <leader>] :tabn<cr>
+nmap <leader>[ :tabp<cr>
 
 
 """""""""""""
