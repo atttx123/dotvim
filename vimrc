@@ -20,9 +20,7 @@ Plug 'scrooloose/syntastic'
 Plug 'pearofducks/ansible-vim'
 Plug 'altercation/vim-colors-solarized'
 " vim fugitive && :Gbrowse
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb' | Plug 'shumphrey/fugitive-gitlab.vim'
 " vim snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " vim airline
@@ -135,7 +133,6 @@ nmap <leader>n :NERDTreeToggle<CR>
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>b"
 let g:jedi#documentation_command = "<leader>d"
 let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<C-Space>"
@@ -145,15 +142,12 @@ let g:jedi#show_call_signatures = "2"
 
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
+let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
 let g:ycm_server_keep_logfiles = 0
 let g:ycm_server_log_level = 'info'
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
-nmap <leader>ji :YcmCompleter GoToInclude<CR>
 nmap <leader>g :YcmCompleter GoToDeclaration<CR>
-nmap <leader>b :YcmCompleter GoToDefinition<CR>
 nmap <leader>jd :YcmCompleter GoTo<CR>
-nmap <leader>ji :YcmCompleter GoToImprecise<CR>
-nmap <leader>jr :YcmCompleter GoToReferences<CR>
+nmap <leader>u :YcmCompleter GoToReferences<CR>
 nmap <leader>d :YcmCompleter GetDoc<CR>
 
 " syntastic
@@ -238,7 +232,3 @@ let g:vikube_disable_custom_highlight = 1
 
 " fugitive
 let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/', 'http://git.4paradigm.com']
-
-" vim-markdown
-let g:vim_markdown_folding_disabled = 1
-let g:TerminusFocusReporting=0
