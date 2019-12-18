@@ -86,6 +86,10 @@ set guioptions-=T
 set guioptions-=L
 set cursorcolumn
 set cursorline
+set ttyfast
+set lazyredraw
+set complete-=i
+set display+=lastline
 
 
 """"""""""""""
@@ -142,9 +146,9 @@ let g:jedi#show_call_signatures = "2"
 
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
-let g:ycm_server_keep_logfiles = 0
-let g:ycm_server_log_level = 'info'
 nmap <leader>g :YcmCompleter GoToDeclaration<CR>
 nmap <leader>jd :YcmCompleter GoTo<CR>
 nmap <leader>u :YcmCompleter GoToReferences<CR>
