@@ -1,5 +1,6 @@
 set title
 set number
+set surround
 set showcmd showmatch noshowmode
 set lazyredraw
 set hidden
@@ -28,6 +29,7 @@ set completeopt=longest,menuone,preview
 set laststatus=2 " show status line
 set cursorcolumn
 set cursorline
+set clipboard=unnamed
 
 
 """"""""""""""
@@ -39,13 +41,26 @@ set pastetoggle=<F12>
 let mapleader=';'
 let maplocalleader = ';'
 
-nmap <C-p> :action GotoFile<CR>
-" tab
-nmap <leader>] :action NextTab<CR>
-nmap <leader>[ :action PreviousTab<CR>
+nmap <C-B> :action GotoDeclaration<CR>
+nmap <C-N> :action GotoClass<CR>
+nmap <C-P> :action GotoFile<CR>
 
-nmap <leader>m :action ActivateStructureToolWindow<CR>
-nmap <leader>n :action ActivateProjectToolWindow<CR>
+nmap <C-O> :action Back<CR>
+nmap <C-I> :action Forward<CR>
+
+nmap <leader>t :action Refactorings.QuickListPopupAction<CR>
+
+" \ also works
+noremap \q <ESC>:action <CR>
+" refresh
+noremap \r <ESC>:source ~/.ideavimrc<CR>
+
+" tab move
+nmap K :action NextTab<CR>
+nmap J :action PreviousTab<CR>
+
+" YouCompleteMe
+nmap <leader>m :action FileStructurePopup<CR>
 nmap <leader>u :action FindUsages<CR>
 nmap <leader>d :action QuickJavaDoc<CR>
 nmap <leader>g :action GotoDeclaration<CR>

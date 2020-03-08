@@ -228,6 +228,9 @@ let g:tagbar_type_go = {
 " hotkey 'gq'
 autocmd FileType python setlocal formatprg='autopep8\ -'
 
+" Vagrantfile
+autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+
 " vikube
 let g:vikube_autoupdate = 1
 let g:vikube_default_logs_tail = 500
