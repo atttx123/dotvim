@@ -105,6 +105,9 @@ nmap J :bp<cr>
 nmap <leader>] :tabn<cr>
 nmap <leader>[ :tabp<cr>
 
+nmap VV ggVG
+map <C-c> "+y
+
 
 """""""""""""
 "" Plugins ""
@@ -123,7 +126,7 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.class$\|\.so$|\.pyc$|\.swp$',
     \ }
 let g:ctrlp_extensions = ['dir', 'mixed']
-nmap <c-p> :CtrlP<CR>
+nmap <C-p> :CtrlP<CR>
 
 " nerd tree
 let NERDTreeWinPos = "left"
