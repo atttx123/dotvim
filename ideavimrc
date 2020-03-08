@@ -49,6 +49,8 @@ nmap <C-O> :action Back<CR>
 nmap <C-I> :action Forward<CR>
 
 nmap <leader>t :action Refactorings.QuickListPopupAction<CR>
+nmap gq :action ReformatCode<CR>
+nmap =  :action AutoIndentLines<CR>
 
 " \ also works
 noremap \q <ESC>:action <CR>
