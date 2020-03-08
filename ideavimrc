@@ -1,6 +1,9 @@
+set commentary
+set multiple-cursors
+set surround
+
 set title
 set number
-set surround
 set showcmd showmatch noshowmode
 set lazyredraw
 set hidden
@@ -48,18 +51,18 @@ nmap <C-P> :action GotoFile<CR>
 nmap <C-O> :action Back<CR>
 nmap <C-I> :action Forward<CR>
 
-nmap <leader>t :action Refactorings.QuickListPopupAction<CR>
-nmap gq :action ReformatCode<CR>
-nmap =  :action AutoIndentLines<CR>
+nmap <leader>t <ESC>:action Refactorings.QuickListPopupAction<CR>
+nmap gq <ESC>:action ReformatCode<CR>
+nmap =  <ESC>:action AutoIndentLines<CR>
 
 " \ also works
-noremap \q <ESC>:action <CR>
+noremap \q <ESC>:actionlist <CR>
 " refresh
 noremap \r <ESC>:source ~/.ideavimrc<CR>
 
 " tab move
-nmap K :action NextTab<CR>
-nmap J :action PreviousTab<CR>
+nmap K <ESC>:action NextTab<CR>
+nmap J <ESC>:action PreviousTab<CR>
 
 " YouCompleteMe
 nmap <leader>m :action FileStructurePopup<CR>
