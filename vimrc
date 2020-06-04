@@ -146,6 +146,8 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "2"
+" Load rope plugin
+let g:pymode_rope = 0
 
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
@@ -160,7 +162,7 @@ nmap <leader>d :YcmCompleter GetDoc<CR>
 " syntastic
 " :SyntasticCheck
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_error_symbol = 'E>'
 let g:syntastic_warning_symbol = 'W>'
 let g:syntastic_aggregate_errors = 1
