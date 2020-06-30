@@ -14,8 +14,6 @@ install
 dependency
 ======
 
-* `go get -u github.com/jstemmer/gotags`
-
 * `pip install jedi flake8 autopep8`
 
-* `apt-get install exuberant-ctags ranger`
+* (*highly recommended*) install: https://github.com/universal-ctags/ctags
