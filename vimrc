@@ -1,3 +1,6 @@
+" set python version to 3.7
+set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/Current/Python
+
 " automatic installlation
 if empty(glob('$HOME/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -110,6 +113,34 @@ nmap VV ggVG
 map <C-c> "+y
 
 
+
+"""""""""""""""
+"" file type ""
+"""""""""""""""
+" c and cpp
+autocmd FileType c,cpp,cc,c++ setlocal tabstop=8 softtabstop=8 shiftwidth=0 noexpandtab
+autocmd FileType c,cpp,cc,c++ nmap <leader>e :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+" golang
+" hotkey 'gq'
+autocmd FileType go setlocal formatprg=gofmt noexpandtab
+autocmd BufReadPost *.go setlocal filetype=go
+
+" python
+" hotkey 'gq'
+autocmd FileType python setlocal formatprg='autopep8\ -'
+
+" Vagrantfile
+autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+" Dockerfile
+autocmd BufRead,BufNewFile [Dd]ockerfile set ft=Dockerfile
+autocmd BufRead,BufNewFile Dockerfile* set ft=Dockerfile
+autocmd BufRead,BufNewFile *.[Dd]ockerfile set ft=Dockerfile
+" vim
+autocmd BufRead,BufNewFile *.vim set ft=vim
+
+
+
 """""""""""""
 "" Plugins ""
 """""""""""""
@@ -173,7 +204,7 @@ let g:syntastic_echo_current_error = 0
 let g:syntastic_mode_map = { "mode": "passive" }
 
 autocmd FileType python let g:syntastic_enable_python_checker = 1
-let g:syntastic_python_checkers = ['python', 'flake8']
+" let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_python_flake8_args='--max-line-length=120'
 
 autocmd FileType go let g:syntastic_enable_go_checker = 1
@@ -183,59 +214,8 @@ autocmd FileType c let g:syntastic_enable_c_checker = 1
 let g:syntastic_c_checkers = ['checkpatch', 'gcc']
 let g:syntastic_c_checkpatch_exec = '$HOME/.vim/own-scripts/checkpatch.pl'
 
-" tagbar
-nmap <leader>m :TagbarToggle<CR>
-" ranger
-nmap <leader>f :Ranger<CR>
-
-
-
-"""""""""""""""
-"" file type ""
-"""""""""""""""
-" c and cpp
-autocmd FileType c,cpp,cc,c++ setlocal tabstop=8 softtabstop=8 shiftwidth=0 noexpandtab
-autocmd FileType c,cpp,cc,c++ nmap <leader>e :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-
 " golang
-" hotkey 'gq'
-autocmd FileType go setlocal formatprg=gofmt noexpandtab
-autocmd BufReadPost *.go setlocal filetype=go
 let g:go_version_warning = 0
-" let g:tagbar_type_go = {
-"     \ 'ctagstype' : 'go',
-"     \ 'kinds'     : [
-"         \ 'p:package',
-"         \ 'i:imports:1',
-"         \ 'c:constants',
-"         \ 'v:variables',
-"         \ 't:types',
-"         \ 'n:interfaces',
-"         \ 'w:fields',
-"         \ 'e:embedded',
-"         \ 'm:methods',
-"         \ 'r:constructor',
-"         \ 'f:functions'
-"     \ ],
-"     \ 'sro' : '.',
-"     \ 'kind2scope' : {
-"         \ 't' : 'ctype',
-"         \ 'n' : 'ntype'
-"     \ },
-"     \ 'scope2kind' : {
-"         \ 'ctype' : 't',
-"         \ 'ntype' : 'n'
-"     \ },
-"     \ 'ctagsbin'  : 'gotags',
-"     \ 'ctagsargs' : '-sort -silent'
-" \ }
-
-" python
-" hotkey 'gq'
-autocmd FileType python setlocal formatprg='autopep8\ -'
-
-" Vagrantfile
-autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 
 " vikube
 let g:vikube_autoupdate = 1
@@ -243,5 +223,11 @@ let g:vikube_default_logs_tail = 500
 let g:vikube_use_current_namespace = 1
 let g:vikube_disable_custom_highlight = 1
 
-" fugitive
-let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/', 'http://git.4paradigm.com']
+" fugitive && :Gbrowse
+let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/']
+
+" tagbar
+nmap <leader>m :TagbarToggle<CR>
+" ranger
+nmap <leader>f :Ranger<CR>
+
