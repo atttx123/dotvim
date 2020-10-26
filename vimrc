@@ -16,9 +16,11 @@ filetype on
 filetype plugin indent on
 
 call plug#begin('$HOME/.vim/plugged')
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'h', 'go'], 'frozen': 1 }
+Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
+Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'codota/tabnine-vim', { 'for': ['python'] }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
 Plug 'scrooloose/syntastic'
 Plug 'pearofducks/ansible-vim'
@@ -181,15 +183,11 @@ let g:jedi#show_call_signatures = "2"
 " Load rope plugin
 let g:pymode_rope = 0
 
-" ycm
-let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
-nmap <leader>g :YcmCompleter GoToDeclaration<CR>
-nmap <leader>jd :YcmCompleter GoTo<CR>
-nmap <leader>u :YcmCompleter GoToReferences<CR>
-nmap <leader>d :YcmCompleter GetDoc<CR>
+" vim-go
+au FileType go nmap <leader>g <Plug>(go-def)
+au FileType go nmap <leader>r <Plug>(go-rename)
+au FileType go nmap <leader>d <Plug>(go-doc)
+
 
 " syntastic
 " :SyntasticCheck
@@ -204,8 +202,6 @@ let g:syntastic_echo_current_error = 0
 let g:syntastic_mode_map = { "mode": "passive" }
 
 autocmd FileType python let g:syntastic_enable_python_checker = 1
-" let g:syntastic_python_checkers = ['python', 'flake8']
-let g:syntastic_python_flake8_args='--max-line-length=120'
 
 autocmd FileType go let g:syntastic_enable_go_checker = 1
 let g:syntastic_go_checkers = ['go', 'gofmt']
