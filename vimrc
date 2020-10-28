@@ -18,8 +18,7 @@ filetype plugin indent on
 call plug#begin('$HOME/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 Plug 'codota/tabnine-vim', { 'for': ['python'] }
-Plug 'fatih/vim-go', { 'for': ['go'] }
-Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc'], 'do': './install.py --clangd-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'go'], 'do': './install.py --clangd-completer --go-completer' }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
@@ -184,19 +183,14 @@ let g:jedi#show_call_signatures = "2"
 " Load rope plugin
 let g:pymode_rope = 0
 
-" vim-go
-au FileType go nmap <leader>g <Plug>(go-def)
-au FileType go nmap <leader>r <Plug>(go-rename)
-au FileType go nmap <leader>d <Plug>(go-doc)
-
 " ycm
-let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1}
+let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
 let g:ycm_server_keep_logfiles = 0
 let g:ycm_server_log_level = 'warning'
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
-au FileType c,cpp,h,cc nmap <leader>g :YcmCompleter GoToDeclaration<CR>
-au FileType c,cpp,h,cc nmap <leader>u :YcmCompleter GoToReferences<CR>
-au FileType c,cpp,h,cc nmap <leader>d :YcmCompleter GetDoc<CR>
+au FileType c,cpp,h,cc,go nmap <leader>g :YcmCompleter GoToDeclaration<CR>
+au FileType c,cpp,h,cc,go nmap <leader>u :YcmCompleter GoToReferences<CR>
+au FileType c,cpp,h,cc,go nmap <leader>d :YcmCompleter GetDoc<CR>
 
 
 " syntastic
