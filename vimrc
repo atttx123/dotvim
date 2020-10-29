@@ -28,6 +28,7 @@ Plug 'altercation/vim-colors-solarized'
 " vim fugitive && :Gbrowse
 Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb' | Plug 'shumphrey/fugitive-gitlab.vim'
 " vim snippets
+Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " vim airline
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -204,14 +205,9 @@ let g:syntastic_cursor_column = 0
 let g:syntastic_echo_current_error = 0
 " :SyntasticToggleMode
 let g:syntastic_mode_map = { "mode": "passive" }
-
-autocmd FileType python let g:syntastic_enable_python_checker = 1
-
-autocmd FileType go let g:syntastic_enable_go_checker = 1
+" Checkers
 let g:syntastic_go_checkers = ['go', 'gofmt']
-
-autocmd FileType c let g:syntastic_enable_c_checker = 1
-let g:syntastic_c_checkers = ['checkpatch', 'gcc']
+let g:syntastic_c_checkers = ['checkpatch', 'gcc', 'clang']
 let g:syntastic_c_checkpatch_exec = '$HOME/.vim/own-scripts/checkpatch.pl'
 
 " golang
@@ -231,3 +227,12 @@ nmap <leader>m :TagbarToggle<CR>
 " ranger
 nmap <leader>f :Ranger<CR>
 
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<Right>"
+let g:UltiSnipsJumpBackwardTrigger = "<Left>"
