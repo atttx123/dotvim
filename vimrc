@@ -18,7 +18,7 @@ filetype plugin indent on
 call plug#begin('$HOME/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 Plug 'codota/tabnine-vim', { 'for': ['python'] }
-Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'go'], 'do': './install.py --clangd-completer --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer' }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
@@ -83,6 +83,7 @@ set background=dark
 set history=400  " vim default save 20 histories
 set autoread     " when file is modified outside vim, auto reload
 set mouse=
+set ttymouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
 set listchars=trail:.,tab:▸\ ,eol:¬
@@ -187,7 +188,7 @@ let g:pymode_rope = 0
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
 let g:ycm_server_keep_logfiles = 0
-let g:ycm_server_log_level = 'warning'
+let g:ycm_server_log_level = 'error'
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
 au FileType c,cpp,h,cc,go nmap <leader>g :YcmCompleter GoToDeclaration<CR>
 au FileType c,cpp,h,cc,go nmap <leader>u :YcmCompleter GoToReferences<CR>
@@ -206,6 +207,8 @@ let g:syntastic_echo_current_error = 0
 " :SyntasticToggleMode
 let g:syntastic_mode_map = { "mode": "passive" }
 " Checkers
+let g:syntastic_python_flake8_args='--max-line-length=120'
+let g:syntastic_python_pylint_args='--errors-only'
 let g:syntastic_go_checkers = ['go', 'gofmt']
 let g:syntastic_c_checkers = ['checkpatch', 'gcc', 'clang']
 let g:syntastic_c_checkpatch_exec = '$HOME/.vim/own-scripts/checkpatch.pl'
