@@ -17,6 +17,7 @@ filetype plugin indent on
 
 call plug#begin('$HOME/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
+Plug 'tell-k/vim-autopep8', { 'for': ['python'] }
 Plug 'codota/tabnine-vim', { 'for': ['python'] }
 Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer' }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
@@ -129,10 +130,6 @@ autocmd FileType c,cpp,cc,c++ nmap <leader>e :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,
 " hotkey 'gq'
 autocmd FileType go setlocal formatprg=gofmt noexpandtab
 autocmd BufReadPost *.go setlocal filetype=go
-
-" python
-" hotkey 'gq'
-autocmd FileType python setlocal formatprg='autopep8\ -'
 
 " Vagrantfile
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
