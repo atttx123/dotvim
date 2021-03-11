@@ -18,7 +18,7 @@ filetype plugin indent on
 call plug#begin('$HOME/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 Plug 'tell-k/vim-autopep8', { 'for': ['python'] }
-Plug 'codota/tabnine-vim', { 'for': ['python'] }
+" Plug 'codota/tabnine-vim', { 'for': ['python'] }
 Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer' }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
