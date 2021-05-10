@@ -18,8 +18,7 @@ filetype plugin indent on
 call plug#begin('$HOME/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 Plug 'tell-k/vim-autopep8', { 'for': ['python'] }
-" Plug 'codota/tabnine-vim', { 'for': ['python'] }
-Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'cuda', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer' }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
@@ -167,7 +166,6 @@ let NERDTreeShowHidden = 0
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.class$']
 nmap <leader>n :NERDTreeToggle<CR>
 
-
 " jedi
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
@@ -181,15 +179,6 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "2"
 " Load rope plugin
 let g:pymode_rope = 0
-
-" ycm
-let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
-let g:ycm_server_keep_logfiles = 0
-let g:ycm_server_log_level = 'error'
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
-au FileType c,cpp,h,cc,go nmap <leader>g :YcmCompleter GoToDeclaration<CR>
-au FileType c,cpp,h,cc,go nmap <leader>u :YcmCompleter GoToReferences<CR>
-au FileType c,cpp,h,cc,go nmap <leader>d :YcmCompleter GetDoc<CR>
 
 
 " syntastic
@@ -231,6 +220,21 @@ nmap <leader>f :Ranger<CR>
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" ycm
+let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
+let g:ycm_server_keep_logfiles = 0
+let g:ycm_server_log_level = 'error'
+let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+au FileType c,cpp,h,cc,go nmap <leader>g :YcmCompleter GoToDeclaration<CR>
+au FileType c,cpp,h,cc,go nmap <leader>u :YcmCompleter GoToReferences<CR>
+au FileType c,cpp,h,cc,go nmap <leader>d :YcmCompleter GetDoc<CR>
+au FileType c,cpp,h,cc,go nmap <leader>t :YcmCompleter GetType<CR>
+au FileType c,cpp,h,cc,go nmap <leader>r :YcmCompleter RefactorRename<CR>
+
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
