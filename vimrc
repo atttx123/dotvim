@@ -16,9 +16,9 @@ filetype on
 filetype plugin indent on
 
 call plug#begin('$HOME/.vim/plugged')
-Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
+Plug 'davidhalter/jedi-vim', { 'for': ['python'], 'frozen': 1 }
 Plug 'tell-k/vim-autopep8', { 'for': ['python'] }
-Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'cuda', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'cuda', 'go'], 'do': './install.py --clang-completer --clangd-completer --go-completer', 'frozen': 1 }
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
