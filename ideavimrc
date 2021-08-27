@@ -70,6 +70,7 @@ map <C-c> "+y
 nmap <leader>m :action FileStructurePopup<CR>
 nmap <leader>u :action FindUsages<CR>
 nmap <leader>d :action QuickJavaDoc<CR>
+nmap <leader>f :action QuickImplementations<CR>
 nmap <leader>g :action GotoDeclaration<CR>
 nmap <leader>r :action RenameElement<CR>
 

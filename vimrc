@@ -214,7 +214,7 @@ let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/']
 " tagbar
 nmap <leader>m :TagbarToggle<CR>
 " ranger
-nmap <leader>f :Ranger<CR>
+nmap <leader>r :Ranger<CR>
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
