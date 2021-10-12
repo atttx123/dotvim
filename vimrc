@@ -74,7 +74,6 @@ set background=dark
 set history=400  " vim default save 20 histories
 set autoread     " when file is modified outside vim, auto reload
 set mouse=
-set ttymouse=
 set encoding=utf8
 set fileencodings=utf8,gb2312,gb18030,latin1,utf-16le,utf-16be,iso-8859,ucs-bom
 set listchars=trail:.,tab:▸\ ,eol:¬
@@ -89,6 +88,9 @@ set ttyfast
 set lazyredraw
 set complete-=i
 set display+=lastline
+if !has('nvim')
+    set ttymouse=
+endif
 
 
 """"""""""""""

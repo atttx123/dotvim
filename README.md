@@ -27,6 +27,8 @@ dependency
 
 * `pip install jedi flake8 autopep8`
 
+* (for neo vim) `pip install neovim`
+
 * (*highly recommended*) install: https://github.com/universal-ctags/ctags
 
 * (for go language) `go get -u github.com/jstemmer/gotags`
