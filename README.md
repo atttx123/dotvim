@@ -3,12 +3,23 @@ dotvim
 
 my .vim &amp; .vimrc
 
-install
+download
 ======
 
+* `git clone https://github.com/atttx123/dotvim.git ~/.vim`
 
-* ```git clone https://github.com/atttx123/dotvim.git ~/.vim```
-* ```ln -s ~/.vim/vimrc ~/.vimrc```
+install for vim
+------
+* `ln -s ~/.vim/vimrc ~/.vimrc`
+* `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+install for neo-vim
+------
+* `mkdir -p ~/.config/nvim/ && ln -sf ~/.vim/vimrc ~/.config/nvim/init.vim`
+* `curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+install for idea-vim
+------
 * ```ln -s ~/.vim/ideavimrc ~/.ideavimrc```
 
 dependency

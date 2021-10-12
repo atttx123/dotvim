@@ -1,13 +1,3 @@
-" set python version to 3.7
-set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/Current/Python
-
-" automatic installlation
-if empty(glob('$HOME/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 "" required!
 set nocompatible
 syntax on
@@ -65,6 +55,7 @@ set number
 set showcmd showmatch noshowmode
 set lazyredraw
 set hidden
+set ignorecase
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set incsearch hlsearch
