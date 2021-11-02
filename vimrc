@@ -12,27 +12,16 @@ Plug 'ycm-core/YouCompleteMe', { 'for': ['h', 'c', 'cpp', 'cc', 'cuda', 'go'], '
 Plug 'mtdl9/vim-log-highlighting', { 'for': 'log' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
-Plug 'scrooloose/syntastic'
-Plug 'pearofducks/ansible-vim'
+" solarized theme, airline and airline-solarized-theme
 Plug 'altercation/vim-colors-solarized'
-" vim fugitive && :Gbrowse
-Plug 'tpope/vim-fugitive' | Plug 'tpope/vim-rhubarb' | Plug 'shumphrey/fugitive-gitlab.vim'
-" vim snippets
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" vim airline
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-" vim kubernetes
-Plug 'c9s/helper.vim', { 'on': [] }
-Plug 'c9s/treemenu.vim', { 'on': [] }
-Plug 'c9s/vikube.vim', { 'on': [] }
-" :call K8S()
-function K8S()
-    call plug#load('helper.vim', 'treemenu.vim', 'vikube.vim')
-endfunction
-
-Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'tpope/vim-fugitive', { 'on': 'Git' }
+Plug 'tpope/vim-rhubarb', { 'on': 'Gbrowse' }
+Plug 'shumphrey/fugitive-gitlab.vim', { 'on': 'Gbrowse' }
+Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
 Plug 'francoiscabrol/ranger.vim', { 'on': 'Ranger' }
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -52,6 +41,11 @@ endtry
 
 set title
 set number
+" augroup relative_numbser
+"     autocmd!
+"     autocmd InsertEnter * :set norelativenumber
+"     autocmd InsertLeave * :set relativenumber
+" augroup END
 set showcmd showmatch noshowmode
 set lazyredraw
 set hidden
@@ -84,11 +78,11 @@ set guioptions-=T
 set guioptions-=L
 set cursorcolumn
 set cursorline
-set ttyfast
 set lazyredraw
 set complete-=i
 set display+=lastline
 if !has('nvim')
+    set ttyfast
     set ttymouse=
 endif
 
@@ -139,10 +133,12 @@ autocmd BufRead,BufNewFile *.vim set ft=vim
 """""""""""""
 " airline
 let g:airline_theme = 'solarized'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_highlighting_cache = 1
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = '|'
 let g:airline_right_sep = '|'
+let g:airline_extensions = ['tabline']
+let g:airline#extensions#tabline#enabled = 1
 
 " ctrlp
 let g:ctrlp_working_path_mode = 0
@@ -209,12 +205,6 @@ nmap <leader>m :TagbarToggle<CR>
 " ranger
 nmap <leader>r :Ranger<CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<C-n>'
-
 " ycm
 let g:ycm_filetype_whitelist = {'h': 1, 'c':1, 'cpp':1, 'cc':1, 'go':1}
 let g:ycm_server_keep_logfiles = 0
@@ -228,9 +218,3 @@ au FileType c,cpp,h,cc,go nmap <leader>u :YcmCompleter GoToReferences<CR>
 au FileType c,cpp,h,cc,go nmap <leader>d :YcmCompleter GetDoc<CR>
 au FileType c,cpp,h,cc,go nmap <leader>t :YcmCompleter GetType<CR>
 au FileType c,cpp,h,cc,go nmap <leader>r :YcmCompleter RefactorRename<CR>
-
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<Right>"
-let g:UltiSnipsJumpBackwardTrigger = "<Left>"
