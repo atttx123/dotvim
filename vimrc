@@ -191,12 +191,6 @@ let g:syntastic_c_checkpatch_exec = '$HOME/.vim/own-scripts/checkpatch.pl'
 " golang
 let g:go_version_warning = 0
 
-" vikube
-let g:vikube_autoupdate = 1
-let g:vikube_default_logs_tail = 500
-let g:vikube_use_current_namespace = 1
-let g:vikube_disable_custom_highlight = 1
-
 " fugitive && :Gbrowse
 let g:fugitive_gitlab_domains = ['https://gitlab.4pd.io/']
 
