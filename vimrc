@@ -101,7 +101,9 @@ nmap <leader>] :tabn<cr>
 nmap <leader>[ :tabp<cr>
 
 nmap VV ggVG
-map <C-c> "+y
+vmap <C-c> "+y
+" Don't copy the replaced text after pasting in visual mode
+vmap p "_dP
 
 
 
@@ -159,11 +161,11 @@ nmap <leader>n :NERDTreeToggle<CR>
 " jedi-vim
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#documentation_command = "<leader>d"
-let g:jedi#usages_command = "<leader>u"
+let g:jedi#goto_assignments_command = "gd"
+let g:jedi#documentation_command = "gD"
+let g:jedi#usages_command = "gr"
 let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#rename_command = "<space>rn"
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = "2"
 " Load rope plugin
@@ -207,8 +209,8 @@ let g:ycm_global_ycm_extra_conf = '$HOME/.vim/own-scripts/ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
-au FileType c,cpp,h,cc,go nmap <leader>g :YcmCompleter GoToDeclaration<CR>
-au FileType c,cpp,h,cc,go nmap <leader>u :YcmCompleter GoToReferences<CR>
-au FileType c,cpp,h,cc,go nmap <leader>d :YcmCompleter GetDoc<CR>
-au FileType c,cpp,h,cc,go nmap <leader>t :YcmCompleter GetType<CR>
-au FileType c,cpp,h,cc,go nmap <leader>r :YcmCompleter RefactorRename<CR>
+au FileType c,cpp,h,cc,go nmap gd :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,h,cc,go nmap gD :YcmCompleter GoToDeclaration<CR>
+au FileType c,cpp,h,cc,go nmap gr :YcmCompleter GoToReferences<CR>
+au FileType c,cpp,h,cc,go nmap <space>t :YcmCompleter GetType<CR>
+au FileType c,cpp,h,cc,go nmap <space>rn :YcmCompleter RefactorRename<CR>
